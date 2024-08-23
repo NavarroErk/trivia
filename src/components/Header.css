@@ -1,0 +1,14 @@
+header {
+  /* border: 2px solid blue; */
+  height: 80px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  z-index: 0;
+}
+
+#header-title {
+  grid-column-start: 2;
+  justify-self: center;
+  align-self: center;
+  font-size: 28pt;
+}
