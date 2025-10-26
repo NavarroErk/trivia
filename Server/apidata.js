@@ -1,4 +1,4 @@
-const triviaQuestions = {
+export const triviaQuestions = {
   easy: [
     {
       q: "What software company is headquartered in Redmond, Washington?",
@@ -78,3 +78,8 @@ const triviaQuestions = {
     },
   ],
 };
+
+for (let i = 0; i < 10; i++) {
+  console.log(i);
+  console.log(i);
+}
