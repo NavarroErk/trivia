@@ -3,7 +3,7 @@ import http from "http";
 // import { clearInterval } from "timers";
 import { WebSocketServer } from "ws";
 import cors from "cors";
-import { triviaQuestions } from "./apidata.js";
+import { generateLobbyCode, lobbyCodes, triviaQuestions } from "./apidata.js";
 
 const app = express();
 app.use(cors());
@@ -30,7 +30,21 @@ app.get("/api/trivia-data", (req, res) => {
   res.json(triviaQuestions);
 });
 
-app.get(`/api/trivia-data/:category`, (req, res) => {
+app.get("/api/trivia-data/:category", (req, res) => {
   const category = req.params.category;
   res.json(triviaQuestions[category]);
+});
+
+app.get("/api/create-lobby", (req, res) => {
+  let lobbyCode = generateLobbyCode();
+  // lobbyCodes.forEach((code) => {
+  //   if (lobbyCode == code) {
+  //     lobbyCode = generateLobbyCode();
+  //   } else {
+  //     console.log(lobbyCode);
+  //     lobbyCodes.push(lobbyCode);
+  //     res.json(lobbyCode);
+  //   }
+  // });
+  res.json(lobbyCode);
 });

@@ -78,3 +78,11 @@ export const triviaQuestions = {
     },
   ],
 };
+
+export let lobbyCodes = [];
+
+export function generateLobbyCode() {
+  // let lobbyCode = Math.floor(Math.random() * 1000);
+  // return lobbyCode;
+  return 100;
+}
