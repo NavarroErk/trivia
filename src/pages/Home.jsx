@@ -2,6 +2,7 @@
 import { fetchLobbyCode } from '../utils/functions';
 import { generateLobbyCode } from '../../Server/apidata';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 
 
@@ -15,6 +16,12 @@ function HomeBtn({onClickFct, id, className, text}) {
 
 
 function Home(){
+
+  const [count, setCount] = useState(0)
+
+
+
+
     async function fetchAllTrivia(){
   const url = `http://localhost:3000/api/trivia-data`;
   try {
@@ -51,12 +58,15 @@ async function fetchTriviaWithDifficulty(category) {
 
     return (
         <>
-          <h1>TRIVIA</h1>
+          {/* <h1>title</h1> */}
           <div className="div-lobby-create">
-            <HomeBtn onClickFct={() => {
+            {/* <HomeBtn onClickFct={() => {
               console.log('join clicked');
-            }} id='btn-join-lobby' className='div-lobby-action' text='JOIN'></HomeBtn>
-            <HomeBtn onClickFct={fetchLobbyCode} id='btn-host-lobby' className='div-lobby-action' text='HOST'></HomeBtn>
+            }} id='btn-join-lobby' className='div-lobby-action' text='JOIN'>
+            </HomeBtn>
+            <HomeBtn onClickFct={fetchLobbyCode} id='btn-host-lobby' className='div-lobby-action' text='HOST'></HomeBtn> */}
+
+            <Link to='/lobby' id='btn-host-lobby' state={{ from: 'home' }}>HOST</Link>
           </div>
         </>
     

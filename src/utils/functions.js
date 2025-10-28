@@ -1,5 +1,5 @@
 export async function fetchLobbyCode() {
-  const url = "http://localhost:3000/api/create-lobby/";
+  const url = "http://localhost:3000/api/lobby-code/";
   try {
     const response = await fetch(url);
 

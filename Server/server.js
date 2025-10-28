@@ -35,7 +35,7 @@ app.get("/api/trivia-data/:category", (req, res) => {
   res.json(triviaQuestions[category]);
 });
 
-app.get("/api/create-lobby", (req, res) => {
+app.get("/api/lobby-code", (req, res) => {
   let lobbyCode = generateLobbyCode();
   // lobbyCodes.forEach((code) => {
   //   if (lobbyCode == code) {
