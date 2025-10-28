@@ -1,8 +1,9 @@
-// import { triviaQuestions } from '../Server/apidata'
+import { useState } from 'react';
 import './App.css'
 
 function App() {
-  // document.querySelector("#p").textContent = 'p'
+  document.querySelector("#p").textContent = 'p'
+  const [text, setText] = useState("p")
 
 
   const clientSocket = new WebSocket("ws://localhost:3000");
@@ -13,7 +14,6 @@ function App() {
   }
   clientSocket.onmessage = (e) => {
     console.log(e);
-    
   }
   clientSocket.onclose = (e) => {
     console.log('websocket connection closed', e);
@@ -22,12 +22,45 @@ function App() {
     console.log('Websocket error:', error);
   }
 
+async function fetchAllTrivia(){
+  const url = `http://localhost:3000/api/trivia-data`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`)
+    }
+    const data = await response.text();
+    console.log(data);
+  } catch (error) {
+    console.error("Error fetching data:", error)
+  }
+}
 
-  // console.log(triviaQuestions);
+// fetchAllTrivia()
+
+
+async function fetchTriviaWithDifficulty(category) {
+  const url = `http://localhost:3000/api/trivia-data/${category}`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.text();
+    console.log(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+// fetchTriviaWithDifficulty('easy');
+
+
+
 
   return (
     <>
-      <p id='p'></p>
+      <p id='p'>{text}</p>
     </>
 
   )

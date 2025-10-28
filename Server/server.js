@@ -2,8 +2,11 @@ import express from "express";
 import http from "http";
 // import { clearInterval } from "timers";
 import { WebSocketServer } from "ws";
+import cors from "cors";
+import { triviaQuestions } from "./apidata.js";
 
 const app = express();
+app.use(cors());
 // Create http server, pass Express app as listener
 const server = http.createServer(app);
 // Create wsserver and attach to shared HTTP server
@@ -11,32 +14,23 @@ const wss = new WebSocketServer({ server });
 
 wss.on("connection", (ws) => {
   console.log("Client Connected");
+  console.log(triviaQuestions.easy);
 
   ws.on("message", (data) => {
     console.log(data);
     ws.send("hi from server");
   });
-
-  // let count = 0;
-
-  // let interval = setInterval(() => {
-  //   ws.send(++count);
-  // }, 10);
-
-  // setTimeout(() => {
-  //   clearInterval(interval);
-  // }, 10000);
 });
 
 server.listen(3000, () => {
   console.log("Server listening on port: 3000");
 });
 
-// app.get("/", (req, res) => {
-//   res.send("Hello World!");
-// });
+app.get("/api/trivia-data", (req, res) => {
+  res.json(triviaQuestions);
+});
 
-// app.listen(port, () => {
-//   console.log(`Example app listening on port ${port}`);
-//   // startWSServer();
-// });
+app.get(`/api/trivia-data/:category`, (req, res) => {
+  const category = req.params.category;
+  res.json(triviaQuestions[category]);
+});
