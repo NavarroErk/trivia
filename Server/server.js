@@ -3,9 +3,12 @@ import http from "http";
 // import { clearInterval } from "timers";
 import { WebSocketServer } from "ws";
 import cors from "cors";
-import { generateLobbyCode, lobbyCodes, triviaQuestions } from "./apidata.js";
+import { triviaQuestions } from "./apidata.js";
+import { generateLobbyCode } from "./functions.js";
+// import { loadLobbyCodes, saveLobbyCodes } from "./apidata.js";
 
 const app = express();
+// let lobbyCodesArr = loadLobbyCodes();
 app.use(cors());
 // Create http server, pass Express app as listener
 const server = http.createServer(app);
@@ -37,14 +40,7 @@ app.get("/api/trivia-data/:category", (req, res) => {
 
 app.get("/api/lobby-code", (req, res) => {
   let lobbyCode = generateLobbyCode();
-  // lobbyCodes.forEach((code) => {
-  //   if (lobbyCode == code) {
-  //     lobbyCode = generateLobbyCode();
-  //   } else {
-  //     console.log(lobbyCode);
-  //     lobbyCodes.push(lobbyCode);
-  //     res.json(lobbyCode);
-  //   }
-  // });
+  console.log(lobbyCode);
+
   res.json(lobbyCode);
 });

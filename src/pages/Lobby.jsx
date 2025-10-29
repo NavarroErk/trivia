@@ -1,13 +1,19 @@
-import React, { use } from 'react'
-import { useLocation } from 'react-router-dom'
+import React from 'react'
+
 
 function Lobby() {
-    const location = useLocation()
-    const { from } = location.state
 
-    alert()    
+
+  
+
+
   return (
-    <div>Lobby</div>
+    <>
+      <div>Lobby Page</div>
+
+
+    </>
+
   )
 }
 

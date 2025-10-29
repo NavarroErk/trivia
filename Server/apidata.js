@@ -79,10 +79,20 @@ export const triviaQuestions = {
   ],
 };
 
-export let lobbyCodes = [];
+export let lobbyCodesArr = [];
 
-export function generateLobbyCode() {
-  // let lobbyCode = Math.floor(Math.random() * 1000);
-  // return lobbyCode;
-  return 100;
-}
+import fs from "fs";
+
+const FILE_PATH = "./apidata.js";
+
+// export function loadLobbyCodes() {
+//   if (!fs.existsSync(FILE_PATH)) {
+//     fs.writeFileSync(FILE_PATH, "[]");
+//   }
+//   const data = fs.readFileSync(FILE_PATH, "utf8");
+//   return JSON.parse(data);
+// }
+
+// export function saveLobbyCodes(arr) {
+//   fs.writeFileSync(FILE_PATH, JSON.stringify(arr, null, 2));
+// }
