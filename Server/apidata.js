@@ -83,7 +83,17 @@ export let lobbyCodesArr = [];
 
 import fs from "fs";
 
-const FILE_PATH = "./apidata.js";
+const fileName = "./data/trivia-qa.json";
+
+fs.writeFile(fileName, JSON.stringify(triviaQuestions, null, 2), (err) => {
+  if (err) {
+    console.error("Error writing file");
+  } else {
+    console.log("Successfully wrote data.");
+  }
+});
+
+// const FILE_PATH = "./apidata.js";
 
 // export function loadLobbyCodes() {
 //   if (!fs.existsSync(FILE_PATH)) {
