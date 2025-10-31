@@ -35,6 +35,7 @@ server.listen(3000, () => {
 
 app.get("/api/trivia-data", (req, res) => {
   const triviaData = getTriviaFromJsonFile();
+  console.log(triviaData);
   res.json(triviaData);
 });
 

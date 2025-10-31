@@ -27,19 +27,12 @@ export function writeTriviaDataToJsonFile() {
 }
 
 export function getTriviaFromJsonFile() {
-  fs.readFileSync("./data/trivia-qa.json", "utf-8"),
-    (err, data) => {
-      if (err) {
-        console.error("Error Reading File: trivia-qa.json");
-        return;
-      }
-      try {
-        const jsonData = JSON.parse(data); // parse the JSON string
-        console.log(jsonData);
-      } catch (error) {
-        console.error("Error parsing JSON...", error);
-      }
-    };
+  try {
+    const triviaData = fs.readFileSync("./data/trivia-qa.json");
+    return JSON.parse(triviaData);
+  } catch (err) {
+    console.error("Error reading or parsing trivia-qa.json", err);
+  }
 }
 
 export function getTriviaByDifficultyFromJsonFile(difficulty) {

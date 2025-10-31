@@ -21,6 +21,7 @@ function HostLobby() {
 
   async function fetchAllTrivia() {
     const url = `http://localhost:3000/api/trivia-data`;
+
     try {
       const response = await fetch(url);
       if (!response.ok) {
