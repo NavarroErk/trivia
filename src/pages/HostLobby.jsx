@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function HostLobby() {
   useEffect(() => {
@@ -58,9 +59,12 @@ function HostLobby() {
   return (
     <>
       <div>Host Lobby</div>
-      <button onClick={fetchAllTrivia}>CLICK FOR ALL TRIVIA</button>
-      <input type="text" />
-      <button>CLICK FOR TRIVIA BY DIFFICULTY</button>
+      {/* <button onClick={fetchAllTrivia}>CLICK FOR ALL TRIVIA</button> */}
+      <Link></Link>
+      <Link to="/create-trivia">Create Custom Trivia</Link>
+      <Link to="/lobby">Use Existing Trivia</Link>
+      {/* <input type="text" /> */}
+      {/* <button>CLICK FOR TRIVIA BY DIFFICULTY</button> */}
     </>
   );
 }

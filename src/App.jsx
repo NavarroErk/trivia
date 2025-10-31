@@ -2,6 +2,7 @@
 import Home from "./pages/Home";
 import Lobby from "./pages/Lobby";
 import HostLobby from "./pages/HostLobby";
+import CreateTrivia from "./pages/CreateTrivia";
 
 // import { fetchLobbyCode } from './utils/functions';
 // import { generateLobbyCode } from '../Server/apidata';
@@ -36,6 +37,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="/host-lobby" element={<HostLobby />}></Route>
+      <Route path="/create-trivia" element={<CreateTrivia />}></Route>
       <Route path="/lobby" element={<Lobby />}></Route>
     </Routes>
   );
