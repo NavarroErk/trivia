@@ -1,10 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import { Context } from "../components/Context/Context.js";
 import { Link } from "react-router-dom";
 
 function HostLobby() {
   useEffect(() => {
     fetchLobbyCode();
   }, []);
+
+  const { user, setUser, lobbyCode, setLobbyCode, socket, setSocket } =
+    useContext(Context);
+
   async function fetchLobbyCode() {
     const url = "http://localhost:3000/api/lobby-code/";
     try {
