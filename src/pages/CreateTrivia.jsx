@@ -25,6 +25,26 @@ function CreateTrivia() {
     clearInputFields();
   }
 
+  async function addCustomTriviaToProfile() {
+    const url = "http://localhost:3000/api/add-custom-trivia-to-profile";
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(customTriviaList),
+      });
+      if (!response.ok) {
+        throw new Error("could not reach endpoint");
+      }
+      const data = await response.text();
+      console.log(data);
+    } catch (error) {
+      console.error("Error Posting Data: ", error);
+    }
+  }
+
   return (
     <>
       <input
@@ -98,7 +118,8 @@ function CreateTrivia() {
           />
         </div>
       </div>
-      <button onClick={addTriviaToList}>Submit</button>
+      <button onClick={addTriviaToList}>Add To Custom Trivia</button>
+      <button onClick={addCustomTriviaToProfile}>Submit</button>
       <div id="div-custom-entries">
         {customTriviaList.map((entry, key) => (
           <div key={key} className="div-entry">
