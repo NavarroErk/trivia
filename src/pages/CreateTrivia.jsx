@@ -21,8 +21,25 @@ function CreateTrivia() {
       category: category,
       difficulty: difficulty,
     };
-    setCustomTriviaList((prevState) => [...prevState, triviaData]);
-    clearInputFields();
+    if (validateInputFields(triviaData) == false) {
+      alert("All fields required.");
+    } else {
+      setCustomTriviaList((prevState) => [...prevState, triviaData]);
+      clearInputFields();
+    }
+  }
+
+  function validateInputFields(triviaDataObj) {
+    let formComplete;
+    for (const key in triviaDataObj) {
+      if (triviaDataObj[key] == "") {
+        formComplete = false;
+        return formComplete;
+      } else {
+        formComplete = true;
+      }
+    }
+    return formComplete;
   }
 
   async function addCustomTriviaToProfile() {
